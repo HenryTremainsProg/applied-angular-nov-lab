@@ -11,7 +11,6 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
   template: `
-    html
     <div data-testid="counter-feature-ui">
       <button
         class="btn btn-primary"
@@ -22,6 +21,7 @@ import {
       </button>
       <span data-testid="current" [textContent]="current()"></span>
       <button class="btn btn-primary" (click)="plus()">+</button>
+      <a data-testid="fizzBuzz">{{ fizzbuzz() }}</a>
     </div>
   `,
   styles: ``,
@@ -40,4 +40,17 @@ export class UiComponent {
   minus() {
     this.current.update((s) => s - 1);
   }
+  fizzbuzz = computed(() => {
+    if (this.current() == 0) {
+      return '';
+    }
+    let val = '';
+    if (this.current() % 3 == 0) {
+      val += 'Fizz';
+    }
+    if (this.current() % 5 == 0) {
+      val += 'Buzz';
+    }
+    return val;
+  });
 }

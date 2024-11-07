@@ -14,17 +14,5 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./banking/banking.routes').then((b) => b.BANKING_ROUTES),
   },
-  {
-    path: 'counter',
-    canMatch: [canMatchFeature('counter-redux')],
-    loadChildren: () =>
-      import('./counter-upgrade/counter-upgrade.routes').then(
-        (r) => r.COUNTER_UPGRADE_ROUTES,
-      ),
-  },
-  {
-    path: 'counter',
-    loadChildren: () =>
-      import('./counter/counter.routes').then((r) => r.COUNTER_ROUTES),
-  },
+
 ];
